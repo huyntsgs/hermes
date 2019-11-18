@@ -131,7 +131,7 @@ func (dt *Default) HTMLTemplate() string {
     /* Type ------------------------------ */
     h1 {
       margin-top: 0;
-      color: #2F3133;
+      color: #40278C;
       font-size: 19px;
       font-weight: bold;
     }
@@ -164,7 +164,7 @@ func (dt *Default) HTMLTemplate() string {
     }
     cite {
       display: block;
-      font-size: 0.925rem; 
+      font-size: 0.925rem;
     }
     cite:before {
       content: "\2014 \0020";
@@ -296,7 +296,7 @@ func (dt *Default) HTMLTemplate() string {
                       {{ .Email.Body.FreeMarkdown.ToHTML }}
                     {{ else }}
 
-                      {{ with .Email.Body.Dictionary }} 
+                      {{ with .Email.Body.Dictionary }}
                         {{ if gt (len .) 0 }}
                           <dl class="body-dictionary">
                             {{ range $entry := . }}
@@ -379,7 +379,7 @@ func (dt *Default) HTMLTemplate() string {
                       {{ end }}
 
                     {{ end }}
-                    {{ with .Email.Body.Outros }} 
+                    {{ with .Email.Body.Outros }}
                         {{ if gt (len .) 0 }}
                           {{ range $line := . }}
                             <p>{{ $line }}</p>
@@ -390,11 +390,11 @@ func (dt *Default) HTMLTemplate() string {
                     <p>
                       {{.Email.Body.Signature}},
                       <br />
-                      {{.Hermes.Product.Name}}
+                      Team {{.Hermes.Product.Name}}
                     </p>
 
                     {{ if (eq .Email.Body.FreeMarkdown "") }}
-                      {{ with .Email.Body.Actions }} 
+                      {{ with .Email.Body.Actions }}
                         <table class="body-sub">
                           <tbody>
                               {{ range $action := . }}
@@ -421,7 +421,18 @@ func (dt *Default) HTMLTemplate() string {
                   <td class="content-cell">
                     <p class="sub center">
                       {{.Hermes.Product.Copyright}}
+											<br/>
+											<a style="text-decoration:none" href="https://grayll.io/privacy/">
+			                "Terms of Service"
+			                </a>
+											|
+											<a style="text-decoration:none" href="https://grayll.io/privacy/">
+											 "Privacy Policy"
+											</a>
                     </p>
+										<p class="sub center">
+
+										</p>
                   </td>
                 </tr>
               </table>
@@ -477,13 +488,13 @@ func (dt *Default) PlainTextTemplate() string {
       </table>
     {{ end }}
   {{ end }}
-  {{ with .Email.Body.Actions }} 
+  {{ with .Email.Body.Actions }}
     {{ range $action := . }}
-      <p>{{ $action.Instructions }} {{ $action.Button.Link }}</p> 
+      <p>{{ $action.Instructions }} {{ $action.Button.Link }}</p>
     {{ end }}
   {{ end }}
 {{ end }}
-{{ with .Email.Body.Outros }} 
+{{ with .Email.Body.Outros }}
   {{ range $line := . }}
     <p>{{ $line }}<p>
   {{ end }}
