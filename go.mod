@@ -1,4 +1,4 @@
-module github.com/huyntsgs/hermes
+module github.com/huyntsgs/hermes/v3
 
 require (
 	github.com/Masterminds/semver v1.4.2 // indirect
